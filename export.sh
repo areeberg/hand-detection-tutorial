@@ -50,9 +50,10 @@ OUTPUT_DIR=model_exported
 # clear old exported model
 rm -rf ${OUTPUT_DIR}
 
-PYTHONPATH=`pwd`/models/research:`pwd`/models/research/slim \
-    python3 ./models/research/object_detection/export_inference_graph.py \
+PYTHONPATH=`pwd`/content/models/research/:/content/models/research/slim \
+    python3 /content/models/research/object_detection/export_inference_graph.py \
             --input_type=image_tensor \
             --pipeline_config_path=${PIPELINE_CONFIG_PATH} \
             --trained_checkpoint_prefix=${CHECKPOINT_PREFIX} \
             --output_directory=${OUTPUT_DIR}
+
