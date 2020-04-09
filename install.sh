@@ -13,10 +13,10 @@ if [ $? -ne 0 ]; then
 fi
 
 # download protoc-3.5.1
-BASE_URL="https://github.com/google/protobuf/releases/download/v3.5.1/"
-filename="protoc-3.5.1-linux-x86_64.zip"
-wget --no-check-certificate ${BASE_URL}${filename} -O /tmp/${filename}
-unzip /tmp/${filename} -d protoc-3.5.1
+#BASE_URL="https://github.com/google/protobuf/releases/download/v3.5.1/"
+#filename="protoc-3.5.1-linux-x86_64.zip"
+#wget --no-check-certificate ${BASE_URL}${filename} -O /tmp/${filename}
+#unzip /tmp/${filename} -d protoc-3.5.1
 
 # install tensorflow models
 # (and also fix some code so that it could be run with pyhton3)
@@ -44,8 +44,8 @@ sed -i "844s/print scores/print(scores)/" \
 sed -n '31p' object_detection/eval_util.py | grep -q vis_utils &&
     ex -s -c 31m23 -c w -c q object_detection/eval_util.py
 
-$ROOT_DIR/protoc-3.5.1/bin/protoc object_detection/protos/*.proto --python_out=.
-cd $ROOT_DIR
+#$ROOT_DIR/protoc-3.5.1/bin/protoc object_detection/protos/*.proto --python_out=.
+#cd $ROOT_DIR
 
 # add pycocotools
 git clone https://github.com/cocodataset/cocoapi.git
