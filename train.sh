@@ -46,15 +46,17 @@ case $1 in
 esac
 
 MODEL_DIR=$1
-PIPELINE_CONFIG_PATH=configs/${MODEL_DIR}.config
+MOD=$1
+PIPELINE_CONFIG_PATH=${MOD}.config
 
 # clear old training logs
 rm -rf ${MODEL_DIR}
 
-PYTHONPATH=`pwd`/models/research:`pwd`/models/research/slim \
-    python3 ./models/research/object_detection/model_main.py \
-            --pipeline_config_path=${PIPELINE_CONFIG_PATH} \
+PYTHONPATH=`pwd`/content/models/research/:/content/models/research/slim \
+    python3  /content/models/research/object_detection/model_main.py \
+            --pipeline_config_path=/content/hand-detection-tutorial/configs/${PIPELINE_CONFIG_PATH} \
             --model_dir=${MODEL_DIR} \
             --num_train_steps=${NUM_TRAIN_STEPS} \
             --sample_1_of_n_eval_samples=1 \
             --alsologtostderr
+
